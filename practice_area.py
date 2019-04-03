@@ -1,9 +1,11 @@
-def common_letters(string_one, string_two):
-    common =[]
-    for letter in string_one:
-        for character in string_two:
-            if letter == character:
-                common.append(letter)
-    return common
+first_name = "Reiko"
+last_name = "Matsuki"
 
-print(common_letters("banana", "cream"))
+
+def password_generator(first_name, last_name):
+    temp_password = first_name[len(first_name)-3:] + last_name[len(last_name)-3:]
+    return temp_password
+
+
+temp_password = password_generator(first_name, last_name)
+print(temp_password)
