@@ -105,21 +105,55 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 ;,; green&white&blue   ;,; 09/15/17 , Myrtle Morris 
 ;,;   $22.66   ;,; green&white&blue;,;09/15/17"""
 
-daily_sales_replaced = daily_sales.replace(";,;", "-")
+daily_sales_replaced = daily_sales.replace(";,;", "+")
 
 daily_transactions = daily_sales_replaced.split(",")
 
 daily_transactions_split = []
 
 for transaction in daily_transactions:
-    daily_transactions_split.append(transaction.split("-"))
+    daily_transactions_split.append(transaction.split("+"))
 
 transactions_clean = []
 
-for record in daily_transactions_split:
+for transaction in daily_transactions_split:
     transaction_clean =[]
-    for items in record:
-        transaction_clean.append(items.replace("\n", "").strip(" "))
-        transactions_clean.append(transaction_clean)
+    for data_point in transaction:
+        transaction_clean.append(data_point.replace("\n", "").strip(" "))
+    transactions_clean.append(transaction_clean)
 
-print(transactions_clean)
+
+customer =[]
+sales =[]
+thread_sold = []
+
+for item in transactions_clean:
+    customer.append(item[0])
+    sales.append(item[1])
+    thread_sold.append(item[2])
+
+
+total_sales = 0
+
+for sale in sales:
+    total_sales += float(sale.strip('$'))
+
+thread_sold_split = []
+
+for sale in thread_sold:
+    for color in sale.split("&"):
+        thread_sold_split.append(color)
+
+def color_count (color):
+    color_total = 0
+    for thread_color in thread_sold_split:
+        if color == thread_color:
+            color_total += 1
+    return color_total
+
+print(color_count("white"))
+
+colors = ['red','yellow','green','white','black','blue','purple']
+
+for color in colors:
+    print("Thread Shed sold {0} threads of {1} toda.".format(color_count(color), color))
