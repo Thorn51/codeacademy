@@ -156,4 +156,4 @@ print(color_count("white"))
 colors = ['red','yellow','green','white','black','blue','purple']
 
 for color in colors:
-    print("Thread Shed sold {0} threads of {1} toda.".format(color_count(color), color))
+    print("Thread Shed sold {0} threads of {1} today.".format(color_count(color), color))
