@@ -4,6 +4,17 @@ class Franchise:
     def __init__(self, address, menus):
         self.address = address
         self.menus = menus
+        self.representative_string = self.address
+
+    def __repr__(self):
+        return self.representative_string
+
+    def available_menus(self, time):
+        available_menu = []
+        for menu in self.menus:
+            if time >= menu.start_time and time <= menu.end_time:
+                available_menu.append(menu)
+        return available_menu
 
 class Menu:
     def __init__(self, name, items, start_time, end_time):
@@ -24,9 +35,6 @@ class Menu:
         return bill
 
 
-
-
-
 brunch_menu = Menu("Brunch", {'pancakes': 7.50, 'waffles': 9.00, 'burger': 11.00, 'home fries': 4.50, 'coffee': 1.50, 'espresso': 3.00, 'tea': 1.00, 'mimosa': 10.50, 'orange juice': 3.50
 }, 1100, 1500)
 
@@ -39,3 +47,7 @@ kid_menu = Menu("Kids", {'chicken nuggets': 6.50, 'fusilli with wild mushrooms':
 menus = [brunch_menu, early_bird_menu, dinner_menu, kid_menu]
 
 flagship_store = Franchise("1232 West End Road", menus)
+
+new_installment = Franchise("12 East Mulberry Street", menus)
+
+print(flagship_store.available_menus(2000))
