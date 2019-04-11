@@ -1,3 +1,10 @@
+import datetime
+
+class Franchise:
+    def __init__(self, address, menus):
+        self.address = address
+        self.menus = menus
+
 class Menu:
     def __init__(self, name, items, start_time, end_time):
         self.name = name
@@ -18,13 +25,17 @@ class Menu:
 
 
 
+
+
 brunch_menu = Menu("Brunch", {'pancakes': 7.50, 'waffles': 9.00, 'burger': 11.00, 'home fries': 4.50, 'coffee': 1.50, 'espresso': 3.00, 'tea': 1.00, 'mimosa': 10.50, 'orange juice': 3.50
-}, "11am", "4pm")
+}, 1100, 1500)
 
-early_bird_menu = Menu("Early Bird", {'salumeria plate': 8.00, 'salad and breadsticks (serves 2, no refills)': 14.00, 'pizza with quattro formaggi': 9.00, 'duck ragu': 17.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 1.50, 'espresso': 3.00,}, "3pm", "6pm")
+early_bird_menu = Menu("Early Bird", {'salumeria plate': 8.00, 'salad and breadsticks (serves 2, no refills)': 14.00, 'pizza with quattro formaggi': 9.00, 'duck ragu': 17.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 1.50, 'espresso': 3.00,}, 1500, 1800)
 
-dinner_menu = Menu("Dinner", {'crostini with eggplant caponata': 13.00, 'ceaser salad': 16.00, 'pizza with quattro formaggi': 11.00, 'duck ragu': 19.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 2.00, 'espresso': 3.00,}, "5pm", "11pm")
+dinner_menu = Menu("Dinner", {'crostini with eggplant caponata': 13.00, 'ceaser salad': 16.00, 'pizza with quattro formaggi': 11.00, 'duck ragu': 19.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 2.00, 'espresso': 3.00,}, 1700, 2300)
 
-kid_menu = Menu("Kids", {'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00}, "11am", "9pm")
+kid_menu = Menu("Kids", {'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00}, 1100, 2100)
 
-print(early_bird_menu.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
+menus = [brunch_menu, early_bird_menu, dinner_menu, kid_menu]
+
+flagship_store = Franchise("1232 West End Road", menus)
